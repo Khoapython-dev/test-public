@@ -1,0 +1,4 @@
+"_moduleAliases": {
+  "@extension": "core/app/wallet/extension",
+  "@plugin": "core/app/wallet/plugin"
+}
