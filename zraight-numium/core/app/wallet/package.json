@@ -1,0 +1,8 @@
+{
+  "name": "zraight-wallet",
+  "version": "1.0.0",
+  "_moduleAliases": {
+    "@extension": "core/app/wallet/extension",
+    "@plugin": "core/app/wallet/plugin"
+  }
+}
