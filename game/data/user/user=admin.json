@@ -1,0 +1,9 @@
+{
+    "name": "admin",
+    "id": 3294829,
+    "effect":"None",
+    "health": 200,
+    "attack": 80,
+    "defense": 50,
+    "coins": 400,
+}

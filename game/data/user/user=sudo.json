@@ -1,0 +1,8 @@
+{
+    "name": "sudo",
+    "health": 55,
+    "attack": 20,
+    "defense": 10,
+    "coins": 400,
+    "effect": null
+}

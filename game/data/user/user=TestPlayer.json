@@ -1,0 +1,8 @@
+{
+    "name": "TestPlayer",
+    "health": 83,
+    "attack": 20,
+    "defense": 10,
+    "coins": 400,
+    "effect": null
+}
