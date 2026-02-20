@@ -1,0 +1,6 @@
+# Simple test program for Numium VM - Basic arithmetic and output
+
+area module main() open
+    output("Hello from Numium!\n")
+    output("VM is working!\n")
+close

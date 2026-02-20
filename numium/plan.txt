@@ -1,0 +1,263 @@
+NUMIUM 1.3.2 — OFFICIAL PLAN (Revised)
+I. BLOCK SYSTEM (QUY TẮC NỀN)
+1️⃣ Structural Block
+
+Dùng cho:
+
+area
+
+module
+
+class
+
+region
+
+database
+
+event
+
+Cú pháp:
+
+<keyword> ... open
+    ...
+close
+
+→ Dùng để định nghĩa cấu trúc tĩnh (static structure)
+
+2️⃣ Control Flow Block
+
+Dùng cho:
+
+if
+
+for
+
+while
+
+switch
+
+try
+
+Cú pháp:
+
+<keyword> ... do
+    ...
+end
+
+→ Dùng cho luồng thực thi (runtime execution)
+
+❌ Không dùng {}
+❌ Không dùng env_open
+
+II. LIBRARY SYSTEM
+
+Import thư viện:
+
+import <library_name>
+
+Thư viện có sẵn:
+
+numium_stdio
+environment
+time
+kernel_linker
+III. RUNTIME INITIALIZATION
+
+Trước khi dùng biến:
+
+INIT environment <env>
+env START
+
+Ý nghĩa:
+
+INIT: khai báo môi trường runtime
+
+env START: kích hoạt môi trường
+
+IV. ENVIRONMENT & VARIABLE SYSTEM
+1️⃣ Khai báo biến
+Có kiểu:
+env <name> <type> = <value>
+Không chỉ định kiểu:
+env <name> << <value>
+2️⃣ Kiểu dữ liệu chính thức
+Type	Mô tả
+int	số nguyên
+float	số thực
+under_int	số nhỏ hơn 0
+string	chuỗi
+hex64	số hex 64-bit
+char	ký tự đơn
+bool	true / false
+list	danh sách
+dict	từ điển
+activate	biến nhận input
+3️⃣ Activate Variable
+env local activate
+
+Biến activate chỉ dùng để nhận input.
+
+V. INPUT / OUTPUT
+
+(thuộc numium_stdio)
+
+output("text")
+output("value: $var")
+
+input("text", ADD:variable)
+
+Quy tắc:
+
+ADD: chỉ dùng với biến có type activate
+
+$var dùng để nội suy biến khi in
+
+VI. TIME LIBRARY
+Hàm
+getTimeNow("UTC+X", "format")
+delay(milliseconds)
+Format hỗ trợ
+%H  -> hour
+%MI -> minute
+%S  -> second
+%D  -> day
+%MO -> month
+%Y  -> year
+VII. KERNEL_LINKER LIBRARY
+Hàm hệ thống
+system("command")
+pwd()
+
+system() trả về giá trị nếu có
+
+pwd() trả về đường dẫn hiện tại
+
+VIII. CONTROL FLOW
+1️⃣ If – Else
+if <condition> do
+    ...
+else if <condition> do
+    ...
+else do
+    ...
+end
+2️⃣ For
+Range loop
+for (<var>) on range(<count>) do
+    ...
+end
+List loop
+for (<new_var>) in <list_var> do
+    ...
+end
+3️⃣ While
+while (<condition>) do
+    ...
+end
+4️⃣ Switch
+switch (<expression>) do
+    case value:
+        ...
+    case value:
+        ...
+end
+5️⃣ Try – Catch
+try do
+    ...
+catch error do
+    ...
+end
+
+Nếu không cần biến error → bỏ tên error
+
+IX. DATABASE STRUCTURE
+
+Database là block lưu trữ dữ liệu tĩnh.
+
+database <name> open
+    <field> <type>
+close
+
+Chỉ dùng trong:
+
+class
+
+hoặc phạm vi module
+
+X. FUNCTION SYSTEM
+1️⃣ Main Entry
+area module main() open
+    ...
+close
+
+→ Điểm bắt đầu chương trình.
+
+2️⃣ Function thường
+module <name>(params) open
+    ...
+close
+3️⃣ Return
+back
+back with <value>
+XI. OOP SYSTEM
+Cấu trúc class
+class <name> open
+
+    region private open
+        ...
+    close
+
+    region public open
+        ...
+    close
+
+    event[ClassName] open
+        ...
+    close
+
+close
+1️⃣ region
+
+private: chỉ dùng trong class
+
+public: dùng bên ngoài
+
+2️⃣ local module
+local module <name>() open
+    ...
+close
+
+→ Không cho phép gọi từ ngoài class
+
+3️⃣ Gọi hàm nội bộ class
+call::<function_name>()
+4️⃣ event
+
+Là constructor
+
+Tự chạy khi class được khởi tạo
+
+XII. COMMON KEYWORDS
+Keyword	Chức năng
+and	toán tử logic
+or	toán tử logic
+stop	dừng vòng lặp
+continue	bỏ qua vòng hiện tại
+pass	không làm gì
+area	khai báo main
+module	khai báo function
+back	return
+with	return có giá trị
+test	thử lệnh nguy hiểm
+errorOutput	in lỗi tùy chọn
+XIII. EXECUTION MODEL (RÕ RÀNG)
+
+Import libraries
+
+INIT environment
+
+env START
+
+area module main() chạy
+
+Các module/class chỉ thực thi khi được gọi

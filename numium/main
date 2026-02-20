@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "constants": [
+    "Hello World"
+  ],
+  "variables": {},
+  "functions": {
+    "main": 0
+  }
+}
